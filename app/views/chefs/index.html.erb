@@ -1,6 +1,16 @@
  <%= render 'shared/page_title', title: "All Chefs" %>
     
     </hr>
+    
+    <ul class="nav nav-tabs">
+        <li >
+            <%= link_to "Recipes", recipes_path %>
+        </li>
+        <li class="active">
+            <%= link_to "chefs", chefs_path %>
+        </li>
+        
+    </ul>
 
 <%= will_paginate %>
 

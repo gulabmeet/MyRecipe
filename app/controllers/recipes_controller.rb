@@ -4,7 +4,12 @@ before_action :set_recipe, only: [:edit, :update, :like, :show]
 before_action :require_user, except: [:show, :index]
 before_action :require_same_user, only: [:edit, :update]
     def index
-      @recipes = Recipe.paginate(page: params[:page], per_page: 4)
+      #@recipes = Recipe.paginate(page: params[:page], per_page: 4)
+       if params[:search]
+          @recipes = Recipe.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 4)
+       else
+          @recipes = Recipe.order("created_at DESC").paginate(page: params[:page], per_page: 4)
+       end
       
     end
     

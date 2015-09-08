@@ -23,5 +23,10 @@ class Recipe < ActiveRecord::Base
         errors.add(:picture, "Should be less than 5MB")
         end    
      end
+     
+     def self.search(query)
+      # where(:title, query) -> This would return an exact match of the query
+      where("name like ?", "%#{query}%") 
+     end
    
 end
