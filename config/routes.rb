@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     
-  devise_for :users
+  
     root 'pages#home'
   get '/home', to: 'pages#home'
   
@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   post '/login', to: 'logins#create'
   
   get '/logout', to: 'logins#destroy'
+  
+  resources :styles, only: [:new, :create, :show]
+  resources :ingredients, only: [:new, :create, :show]
   
 end
