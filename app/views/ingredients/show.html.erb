@@ -1,4 +1,4 @@
-    <%= render 'shared/page_title', title: "All Recipes" %>
+    <%= render 'shared/page_title', title: "Ingredients for :" + @ingredient.name %>
     
     </hr>
     
@@ -22,9 +22,9 @@
         
     </ul>
     
-    <%= will_paginate %>
+    <%= will_paginate @recipes%>
     
-    <% @recipes.each do |recipe| %>
+    <% @ingredient.recipes.each do |recipe| %>
     
     <div class="row">
         <div class="col-md-2">
@@ -67,4 +67,4 @@
     
     <% end %>
     
-    <%= will_paginate %>
+    <%= will_paginate @recipes%>

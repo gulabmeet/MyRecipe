@@ -4,6 +4,10 @@ class IngredientsController < ApplicationController
         @ingredient = Ingredient.new
     end
     
+    def show
+        @ingredient = Ingredient.find(params[:id])
+        @recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 4)
+    end
     def create
         @ingredient = Ingredient.new(ingredient_params)
         if @ingredient.save

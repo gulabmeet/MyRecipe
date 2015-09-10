@@ -4,6 +4,11 @@ class StylesController < ApplicationController
         @style = Style.new
     end
     
+    def show
+        @style = Style.find(params[:id])
+        @recipes = @style.recipes.paginate(page: params[:page], per_page: 4)
+    end
+    
     def create
         @style = Style.new(style_params)
         if @style.save
